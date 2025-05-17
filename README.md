@@ -39,3 +39,35 @@ This repository documents my journey into **Flask** and **MLOps**, starting from
 - Flask 🌶️  
 - HTML/CSS 🎨  
 - Jinja2 🧩  
+
+---
+
+# 📌 Flask To-Do List API
+
+As part of the project, I implemented a basic **To-Do List API** using Flask with CRUD operations.
+
+## ✅ Features
+
+- View all to-do items
+- Add a new item
+- Update an existing item
+- Delete an item
+
+## 🔗 API Endpoints
+
+| Method | Route               | Description              |
+|--------|---------------------|--------------------------|
+| GET    | `/`                 | Welcome route            |
+| GET    | `/items`            | Retrieve all items       |
+| POST   | `/items`            | Add a new item           |
+| PUT    | `/items/<item_id>`  | Update an item by ID     |
+| DELETE | `/items/<item_id>`  | Delete an item by ID     |
+
+Each item has the following structure:
+
+```json
+{
+  "id": int,
+  "name": "string",
+  "description": "string"
+}
