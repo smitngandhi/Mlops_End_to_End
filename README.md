@@ -6,45 +6,41 @@ This repository documents my journey into **Flask** and **MLOps**, starting from
 
 ---
 
-## ✅ Progress Log  
+## ✅ Progress Log
 
 ### 📌 Explored Flask Fundamentals
 
-* Learned how Flask works under the hood using the **WSGI** protocol.
-* Built routes, handled requests, and served multiple HTML pages using `render_template()`.
+* Understood how Flask works internally using the **WSGI** protocol.
+* Built basic routes, handled requests, and rendered multiple HTML pages using Jinja templating.
 
 ### 🧩 Integrated Jinja2 Templating
 
-* Utilized Flask's templating engine **Jinja2** to inject dynamic content into HTML templates.
+* Used **Jinja2** to dynamically inject content into HTML templates for a more responsive user interface.
 
 ### 📝 Built a Sample Form
 
-* Created `form.html` with fields for **Name**, **Email**, and **Message**.
-* Implemented both **GET** and **POST** methods:
-
-  * `GET`: Loads the form.
-  * `POST`: Processes submitted form data using `request.form`.
+* Developed an HTML form to collect **Name**, **Email**, and **Message**.
+* Implemented both **GET** (form load) and **POST** (form submission) methods.
 
 ### 🔗 Learned Variable Routing
 
-* Used dynamic URL routing with `<variable>` syntax in Flask.
-* Passed variables to route functions via URLs for dynamic content handling.
+* Used `<variable>` syntax to pass dynamic parameters in URLs.
+* Leveraged Flask routing flexibility to build interactive pages.
 
-### 🔄 Redirect with Dynamic Parameters
+### ↺ Redirect with Dynamic Parameters
 
-* Implemented `redirect(url_for(...))` to redirect users and pass computed parameters through dynamic URLs.
+* Used Flask's `redirect` and `url_for` functions to redirect users with parameters embedded in the URL.
 
 ### 📊 Created a Marks Entry System
 
-* Developed a `marks.html` page to accept marks for 3 subjects.
-* Calculated the average and passed it through a dynamic route to a `score` function.
-* Displayed result as `PASS` or `FAIL` based on the average.
+* Built a form to accept marks for 3 subjects.
+* Calculated average and redirected users to display `PASS` or `FAIL` based on performance.
 
 ---
 
 ## 🔧 Tech Stack
 
-* Python 🐍
+* Python 🦖
 * Flask 🌶️
 * HTML/CSS 🎨
 * Jinja2 🧩
@@ -53,34 +49,23 @@ This repository documents my journey into **Flask** and **MLOps**, starting from
 
 # 📌 Flask To-Do List API
 
-As part of the project, I implemented a basic **To-Do List API** using Flask with full CRUD operations.
+Developed a basic **To-Do List API** using Flask, implementing full CRUD functionality.
 
 ## ✅ Features
 
-* View all to-do items
-* Add a new item
-* Update an existing item
-* Delete an item
+* View, add, update, and delete to-do items via RESTful routes.
 
 ## 🔗 API Endpoints
 
-| Method | Route              | Description          |
-| ------ | ------------------ | -------------------- |
-| GET    | `/`                | Welcome route        |
-| GET    | `/items`           | Retrieve all items   |
-| POST   | `/items`           | Add a new item       |
-| PUT    | `/items/<item_id>` | Update an item by ID |
-| DELETE | `/items/<item_id>` | Delete an item by ID |
+| Method | Route              | Description        |
+| ------ | ------------------ | ------------------ |
+| GET    | `/`                | Welcome route      |
+| GET    | `/items`           | Retrieve all items |
+| POST   | `/items`           | Add a new item     |
+| PUT    | `/items/<item_id>` | Update an item     |
+| DELETE | `/items/<item_id>` | Delete an item     |
 
-Each item has the following structure:
-
-```json
-{
-  "id": int,
-  "name": "string",
-  "description": "string"
-}
-```
+Each item contains `id`, `name`, and `description` fields.
 
 ---
 
@@ -90,22 +75,14 @@ Each item has the following structure:
 
 ### ✅ Initial Setup
 
-* Created a folder named `mlflow`.
-* Set up a virtual environment inside the folder.
-* Created `requirements.txt` with necessary dependencies.
-* Installed MLflow using `pip install mlflow`.
+* Created a dedicated folder and virtual environment for MLflow.
+* Installed MLflow and required dependencies.
+* Launched the MLflow UI and understood the structure of the `mlruns` folder.
 
 ### 🧪 Experiment Tracking
 
-* Created `get-started.ipynb` to test MLflow tracking.
-* Ran MLflow UI using the command:
-
-```bash
-mlflow ui
-```
-
-* Observed the MLflow dashboard and explored the `mlruns` folder.
-* `mlruns` automatically tracks experiments with metrics, parameters, models, and artifacts.
+* Ran sample experiments and logged metrics, parameters, and models.
+* Visualized runs through MLflow UI for effective comparison.
 
 ---
 
@@ -113,61 +90,30 @@ mlflow ui
 
 ### 📅 Started: September 19, 2025
 
-* Built a full regression model to predict house prices.
-* Performed **hyperparameter tuning** using `GridSearchCV` with `RandomForestRegressor`.
-* Used `cv=3` to perform 3-fold cross-validation.
-* Logged every hyperparameter using:
+* Built a regression model with `RandomForestRegressor`.
+* Used `GridSearchCV` for hyperparameter tuning with 3-fold cross-validation.
+* Logged metrics (MSE) and parameters with MLflow.
+* Registered the model depending on the tracking URI type.
 
-```python
-mlflow.log_params(params)
-```
+### 📦 Artifacts Management
 
-* Logged evaluation metric (MSE) using:
+* Explored automatic creation of `mlruns/` and `artifacts/` directory.
+* Verified model reproducibility with versioned metrics and model files.
 
-```python
-mlflow.log_metric("mse", mse)
-```
+---
 
-### 🔁 Model Versioning and Tracking
+## 📊 ANN Model Training with Hyperopt
 
-* Set tracking URI:
+### 📅 Progressed on: May 20, 2025
 
-```python
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
-```
+* Trained an ANN on the Wine Quality dataset.
+* Split data into training, validation, and test sets.
+* Standardized features using mean and variance normalization.
+* Performed hyperparameter tuning using **Hyperopt** (`fmin`, `tpe`, `Trials`).
+* Tracked performance using `eval_rmse`.
+* Logged best model parameters and RMSE to MLflow.
+* Finalized the best run based on lowest RMSE from trials.
 
-* Parsed the tracking scheme using:
+---
 
-```python
-from urllib.parse import urlparse
-urlparse(mlflow.get_tracking_uri()).scheme
-```
-
-* Based on the URI type:
-
-  * If **not a file** (e.g., remote server), registered the model using:
-
-```python
-mlflow.sklearn.log_model(model, artifact_path="model", registered_model_name="Best Random Forest Model")
-```
-
-* Else, logged the model without registration:
-
-```python
-mlflow.sklearn.log_model(model, artifact_path="model", signature=signature, input_example=X_test[:5])
-```
-
-### 📦 Artifacts Logged
-
-After the run:
-
-* `mlruns/` created automatically
-* Inside it:
-
-  * `artifacts/`: Stores model metadata (MLmodel file, Conda env, etc.)
-  * `metrics/`: Logged evaluation metrics
-  * `params/`: Logged model parameters
-
-Artifacts make the experiment reproducible and the model deployable.
-
-
+This project acts as a strong foundational MLOps journey, combining backend API development with end-to-end ML workflows.
