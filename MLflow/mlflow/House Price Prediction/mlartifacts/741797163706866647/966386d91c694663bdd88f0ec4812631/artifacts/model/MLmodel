@@ -15,10 +15,10 @@ flavors:
     sklearn_version: 1.6.1
 is_signature_from_type_hint: false
 mlflow_version: 2.22.0
-model_size_bytes: 472940
-model_uuid: b149402cf48c476fa9e6fa31c3b2163d
+model_size_bytes: 472796
+model_uuid: d078257beb9841a7a1708d854f109926
 prompts: null
-run_id: f9af5253e7434c22b35b23a1141945ee
+run_id: 966386d91c694663bdd88f0ec4812631
 saved_input_example_info:
   artifact_path: input_example.json
   pandas_orient: split
@@ -34,4 +34,4 @@ signature:
   outputs: '[{"type": "double", "name": "price", "required": true}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2025-05-19 16:43:02.288052'
+utc_time_created: '2025-05-19 16:56:47.831744'

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/741797163706866647/966386d91c694663bdd88f0ec4812631/artifacts
+end_time: 1747673830241
+entry_point_name: ''
+experiment_id: '741797163706866647'
+lifecycle_stage: active
+run_id: 966386d91c694663bdd88f0ec4812631
+run_name: caring-bird-226
+run_uuid: 966386d91c694663bdd88f0ec4812631
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747673750521
+status: 3
+tags: []
+user_id: Smit

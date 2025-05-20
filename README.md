@@ -6,7 +6,7 @@ This repository documents my journey into **Flask** and **MLOps**, starting from
 
 ---
 
-## ✅ Progress Log
+## ✅ Progress Log  
 
 ### 📌 Explored Flask Fundamentals
 
