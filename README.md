@@ -2,118 +2,154 @@
 
 This repository documents my journey into **Flask** and **MLOps**, starting from scratch and gradually building a production-ready ML system.
 
-## 📅 Started: May 17, 2025
+## 📅 Project Timeline
+
+* **Flask & API Development Start:** May 17, 2025
+* **MLflow Integration Start:** September 18, 2025
+* **Hyperparameter Optimization with Hyperopt:** May 20, 2025
+* **DVC Integration:** May 21, 2025
 
 ---
 
 ## ✅ Progress Log
 
-### 📌 Explored Flask Fundamentals
+### 📌 Flask Fundamentals
 
-* Understood how Flask works internally using the **WSGI** protocol.
-* Built basic routes, handled requests, and rendered multiple HTML pages using Jinja templating.
+* Understood Flask's internal working with **WSGI**.
+* Built routes, handled requests, and used **Jinja2** for rendering HTML.
 
-### 🧩 Integrated Jinja2 Templating
+### 🧩 Jinja2 Templating
 
-* Used **Jinja2** to dynamically inject content into HTML templates for a more responsive user interface.
+* Dynamically injected content into HTML pages.
 
-### 📝 Built a Sample Form
+### 📝 Form Handling
 
-* Developed an HTML form to collect **Name**, **Email**, and **Message**.
-* Implemented both **GET** (form load) and **POST** (form submission) methods.
+* Built a form to collect **Name**, **Email**, and **Message**.
+* Implemented both **GET** and **POST** methods.
 
-### 🔗 Learned Variable Routing
+### 🔗 Variable Routing
 
-* Used `<variable>` syntax to pass dynamic parameters in URLs.
-* Leveraged Flask routing flexibility to build interactive pages.
+* Used `<variable>` in URLs for dynamic routing.
 
-### ↺ Redirect with Dynamic Parameters
+### ↺ Redirect with Parameters
 
-* Used Flask's `redirect` and `url_for` functions to redirect users with parameters embedded in the URL.
+* Used `redirect()` and `url_for()` for clean user redirection with parameters.
 
-### 📊 Created a Marks Entry System
+### 📊 Marks Entry System
 
-* Built a form to accept marks for 3 subjects.
-* Calculated average and redirected users to display `PASS` or `FAIL` based on performance.
-
----
-
-## 🔧 Tech Stack
-
-* Python 🦖
-* Flask 🌶️
-* HTML/CSS 🎨
-* Jinja2 🧩
+* Created a form to input marks for 3 subjects.
+* Calculated average and redirected users to display `PASS` or `FAIL`.
 
 ---
 
-# 📌 Flask To-Do List API
+## 🧪 Flask To-Do List API
 
-Developed a basic **To-Do List API** using Flask, implementing full CRUD functionality.
+Implemented a simple **RESTful API** for a To-Do list application.
 
-## ✅ Features
+### ✅ Features
 
-* View, add, update, and delete to-do items via RESTful routes.
+* View, Add, Update, and Delete tasks
 
-## 🔗 API Endpoints
+### 🔗 API Endpoints
 
 | Method | Route              | Description        |
 | ------ | ------------------ | ------------------ |
-| GET    | `/`                | Welcome route      |
+| GET    | `/`                | Welcome message    |
 | GET    | `/items`           | Retrieve all items |
 | POST   | `/items`           | Add a new item     |
 | PUT    | `/items/<item_id>` | Update an item     |
 | DELETE | `/items/<item_id>` | Delete an item     |
 
-Each item contains `id`, `name`, and `description` fields.
+Each item contains:
+
+```json
+{
+  "id": int,
+  "name": str,
+  "description": str
+}
+```
 
 ---
 
-# 📈 MLOps with MLflow
-
-## 📅 Started: September 18, 2025
+## 📈 MLOps with MLflow
 
 ### ✅ Initial Setup
 
-* Created a dedicated folder and virtual environment for MLflow.
-* Installed MLflow and required dependencies.
-* Launched the MLflow UI and understood the structure of the `mlruns` folder.
+* Created a virtual environment and folder for MLflow.
+* Installed MLflow and explored the `mlruns` folder.
+* Launched the MLflow UI for experiment tracking.
 
 ### 🧪 Experiment Tracking
 
-* Ran sample experiments and logged metrics, parameters, and models.
-* Visualized runs through MLflow UI for effective comparison.
+* Logged metrics, parameters, and models from sample experiments.
+* Compared runs using the MLflow UI.
 
----
+### 🏠 House Price Prediction
 
-## 🏠 House Price Prediction with MLflow
-
-### 📅 Started: September 19, 2025
-
-* Built a regression model with `RandomForestRegressor`.
-* Used `GridSearchCV` for hyperparameter tuning with 3-fold cross-validation.
-* Logged metrics (MSE) and parameters with MLflow.
-* Registered the model depending on the tracking URI type.
+* Used `RandomForestRegressor`.
+* Applied `GridSearchCV` with 3-fold cross-validation.
+* Logged MSE and hyperparameters.
+* Registered models with appropriate tracking URI.
 
 ### 📦 Artifacts Management
 
-* Explored automatic creation of `mlruns/` and `artifacts/` directory.
-* Verified model reproducibility with versioned metrics and model files.
+* Verified creation of `mlruns/` and `artifacts/` folders.
+* Ensured reproducibility using versioned artifacts.
+
+### 📊 ANN Model with Hyperopt
+
+* Trained ANN on Wine Quality dataset.
+* Used Hyperopt (`fmin`, `tpe`, `Trials`) for hyperparameter tuning.
+* Tracked RMSE and best parameters with MLflow.
 
 ---
 
-## 📊 ANN Model Training with Hyperopt
+## 📦 Data Version Control with DVC
 
-### 📅 Progressed on: May 20, 2025
+### 📅 Started: May 21, 2025
 
-* Trained an ANN on the Wine Quality dataset.
-* Split data into training, validation, and test sets.
-* Standardized features using mean and variance normalization.
-* Performed hyperparameter tuning using **Hyperopt** (`fmin`, `tpe`, `Trials`).
-* Tracked performance using `eval_rmse`.
-* Logged best model parameters and RMSE to MLflow.
-* Finalized the best run based on lowest RMSE from trials.
+### ✅ Steps Followed
+
+1. Created a folder named `DVC/` and a virtual environment `dvc_venv`.
+2. Installed DVC:
+
+   ```bash
+   pip install dvc
+   ```
+3. Created a `data/` folder and added `data.txt`.
+4. Initialized DVC inside the project:
+
+   ```bash
+   dvc init
+   ```
+5. Started tracking data:
+
+   ```bash
+   dvc add data/data.txt
+   ```
+6. Noted: DVC-generated files (e.g., `.dvc`) should be tracked by Git, not the actual data file.
+7. Tracked changes using:
+
+   ```bash
+   git add data/data.txt.dvc data/.gitignore
+   ```
+8. Observed versioned hash changes after modifying `data.txt` and re-running:
+
+   ```bash
+   dvc add data/data.txt
+   git add .
+   ```
+9. Found versioned data inside `.dvc/cache/` folder.
 
 ---
 
-This project acts as a strong foundational MLOps journey, combining backend API development with end-to-end ML workflows.
+## 🔧 Tech Stack
+
+* **Python** 🐍
+* **Flask** 🌶️
+* **HTML/CSS** 🎨
+* **Jinja2** 🧩
+* **MLflow** 📈
+* **DVC** 📦
+* **Hyperopt** 🔍
