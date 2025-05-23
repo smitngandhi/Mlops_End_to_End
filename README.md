@@ -173,18 +173,4 @@ Each item contains:
 * Configured and pushed code to DagsHub using personal credentials.
 * Created the following structure for the ML pipeline:
 
-```
-project/
-├── data/
-│   └── raw/
-│       └── data.csv
-├── src/
-│   ├── __init__.py       # Marks src as a package
-│   ├── train.py          # Handles model training
-│   ├── evaluating.py     # Evaluates the trained model
-│   └── preprocess.py     # Handles data preprocessing
-├── params.yaml           # Contains parameters for the pipeline
-├── README.md
-```
-
 ![Folder Structure](image-1.png)
