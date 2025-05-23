@@ -1,72 +1,63 @@
-# 🚀 MLOps End-to-End Project with Flask
+# 🚀 End-to-End MLOps Project with Flask
 
-This repository documents my journey into **Flask** and **MLOps**, starting from scratch and gradually building a production-ready ML system.
-
----
-
-## 📅 Project Timeline
-
-* **Flask & API Development Start:** May 17, 2025
-* **MLflow Integration Start:** September 18, 2025
-* **Hyperparameter Optimization with Hyperopt:** May 20, 2025
-* **DVC Integration:** May 21, 2025
+This repository showcases my journey into **Flask** and **MLOps**, documenting each milestone from initial API development to full production-grade ML pipeline deployment.
 
 ---
 
-## ✅ Progress Log
+## 🗓️ Project Timeline
+
+| Milestone                                 | Date               |
+| ----------------------------------------- | ------------------ |
+| Flask & API Development Started           | May 17, 2025       |
+| MLflow Integration Initiated              | September 18, 2025 |
+| Hyperparameter Optimization with Hyperopt | May 20, 2025       |
+| DVC Integration                           | May 21, 2025       |
+| ML Pipeline on DagsHub                    | December 23, 2025  |
+
+---
+
+## ✅ Progress Highlights
 
 ### 📌 Flask Fundamentals
 
-* Learned the basics of Flask and its WSGI architecture.
-* Built routes and handled requests.
-* Used **Jinja2** for rendering dynamic HTML templates.
-
-### 🧩 Jinja2 Templating
-
-* Dynamically injected variables and data into HTML pages.
+* Understood WSGI architecture and Flask basics.
+* Created dynamic routes using `@app.route`.
+* Utilized **Jinja2** for templating and dynamic HTML rendering.
 
 ### 📝 Form Handling
 
-* Developed forms to collect **Name**, **Email**, and **Message**.
-* Implemented both **GET** and **POST** methods to handle form submissions.
+* Implemented user forms to capture Name, Email, and Message.
+* Managed both `GET` and `POST` methods for form submissions.
 
-### 🔗 Variable Routing
+### 🔗 Routing & Redirection
 
-* Used `<variable>` in URLs for creating dynamic routes.
-
-### ↺ Redirect with Parameters
-
-* Used `redirect()` and `url_for()` to redirect users and pass parameters cleanly.
+* Created variable routes using `<variable>`.
+* Applied `redirect()` and `url_for()` for navigation with parameters.
 
 ### 📊 Marks Entry System
 
-* Built a form to input marks for 3 subjects.
-* Calculated average and redirected users to a result page showing `PASS` or `FAIL`.
+* Built a form to accept marks for three subjects.
+* Calculated average and displayed a result page with `PASS` or `FAIL`.
 
 ---
 
 ## 🧪 Flask To-Do List API
 
-Developed a simple RESTful API for managing a To-Do list.
-
 ### ✅ Features
 
-* View all tasks
-* Add new tasks
-* Update existing tasks
-* Delete tasks
+* View, Add, Update, and Delete tasks
 
-### 🔗 API Endpoints
+### 🔗 Endpoints
 
 | Method | Route              | Description        |
 | ------ | ------------------ | ------------------ |
 | GET    | `/`                | Welcome message    |
-| GET    | `/items`           | Retrieve all items |
-| POST   | `/items`           | Add a new item     |
-| PUT    | `/items/<item_id>` | Update an item     |
-| DELETE | `/items/<item_id>` | Delete an item     |
+| GET    | `/items`           | Retrieve all tasks |
+| POST   | `/items`           | Add a new task     |
+| PUT    | `/items/<item_id>` | Update a task      |
+| DELETE | `/items/<item_id>` | Delete a task      |
 
-Each item contains:
+### 📂 Task Format
 
 ```json
 {
@@ -82,71 +73,44 @@ Each item contains:
 
 ### ✅ Initial Setup
 
-* Set up a virtual environment and MLflow project structure.
-* Installed MLflow and understood the structure of `mlruns/`.
-* Launched the MLflow UI for visual experiment tracking.
+* Created virtual environment and structured MLflow project.
+* Launched MLflow UI and explored experiment tracking features.
 
-### 🧪 Experiment Tracking
+### 🔮 Experiment Tracking
 
-* Logged parameters, metrics, and models from test experiments.
-* Compared multiple experiment runs using MLflow UI.
+* Logged model parameters, metrics, and artifacts.
+* Used the UI to compare experiments effectively.
 
-### 🏠 House Price Prediction
+### 🏡 House Price Prediction Project
 
-* Trained a `RandomForestRegressor` model.
-* Used `GridSearchCV` with 3-fold cross-validation.
-* Logged hyperparameters and metrics (MSE).
-* Registered models using the tracking URI.
+* Trained `RandomForestRegressor` with `GridSearchCV` (3-fold CV).
+* Logged Mean Squared Error and hyperparameters.
+* Registered models via MLflow Tracking URI.
 
-### 📦 Artifacts Management
+### 📦 Artifact Management
 
-* Verified the creation of `mlruns/` and `artifacts/` directories.
-* Ensured reproducibility with versioned artifacts.
+* Verified creation of `mlruns/` and `artifacts/`.
+* Ensured reproducibility through versioned logging.
 
-### 📊 ANN Model with Hyperopt
+### 📊 ANN + Hyperopt on Wine Quality Dataset
 
-* Trained an ANN on the Wine Quality dataset.
-* Used `Hyperopt` with `fmin`, `tpe`, and `Trials` for tuning.
-* Tracked RMSE and best hyperparameters using MLflow.
+* Implemented ANN model.
+* Tuned hyperparameters using `Hyperopt` (`fmin`, `tpe`, `Trials`).
+* Logged RMSE and best parameters.
 
 ---
 
 ## 📦 Data Version Control with DVC
 
-### 📅 Started: May 21, 2025
+### ✅ Setup Steps
 
-### ✅ Steps Followed
-
-1. Created a `DVC/` folder and a virtual environment named `dvc_venv`.
-2. Installed DVC:
-
-   ```bash
-   pip install dvc
-   ```
-3. Created a `data/` directory and added `data.txt`.
-4. Initialized DVC inside the project:
-
-   ```bash
-   dvc init
-   ```
-5. Started tracking the data:
-
-   ```bash
-   dvc add data/data.txt
-   ```
-6. Noted that DVC tracks `.dvc` files in Git, not the actual data.
-7. Tracked changes using Git:
-
-   ```bash
-   git add data/data.txt.dvc data/.gitignore
-   ```
-8. After editing `data.txt`, updated tracking:
-
-   ```bash
-   dvc add data/data.txt
-   git add .
-   ```
-9. Observed hashed versions of data in `.dvc/cache/`.
+1. Created virtual environment `dvc_venv`.
+2. Installed DVC using `pip install dvc`.
+3. Created and tracked `data/` directory.
+4. Ran `dvc init` and `dvc add data/data.txt`.
+5. Used Git to version control `.dvc` files.
+6. Updated DVC tracking after modifying `data.txt`.
+7. Noticed hashed data stored in `.dvc/cache/`.
 
 ---
 
@@ -162,19 +126,47 @@ Each item contains:
 
 ---
 
-## 🧱 Building ML Pipeline on DagsHub
+## 🧱 ML Pipeline on DagsHub
 
-### 📅 Started: December 23, 2025
+### ✅ Setup
 
-* Created a repository on DagsHub and cloned it locally.
-* Added a `README.md` file documenting upcoming tasks.
-* Created a new virtual environment `ml_pipeline` and added it to `.gitignore`.
-* Made a folder structure: `data/raw/` and exported `data.csv` (Disease dataset).
-* Configured and pushed code to DagsHub using personal credentials.
+* Created and cloned repository from DagsHub.
+* Added `README.md` and structured project with `data/raw/data.csv`.
+* Created virtual environment `ml_pipeline` and added it to `.gitignore`.
+* Defined `params.yaml` with config for preprocessing and training.
 
-### 📆 ML Pipeline Setup
+### 🔹 Preprocessing
 
-* Defined `params.yaml` with configurations for preprocessing and training.
-* Implemented logic in `preprocess.py` to read data from `input_path` and store the processed output in `output_path`.
-* Ensured proper directory creation using `os.makedirs(os.path.dirname(output_path), exist_ok=True)`.
-* Saved the preprocessed data to `data/preprocessed/data.csv`.
+* Built `preprocess.py` to read from `input_path` and save to `output_path`.
+* Used `os.makedirs()` to ensure directory creation.
+
+### 🔹 Model Training
+
+* Developed `train.py` with MLflow tracking for:
+
+  * Accuracy
+  * Confusion Matrix
+  * Classification Report
+* Used `GridSearchCV` for hyperparameter tuning.
+
+### 🔹 Evaluation
+
+* Added `evaluate.py` to load `model.pkl`, make predictions, and log final accuracy.
+
+### 🔹 DVC Pipeline Automation
+
+* Created `dvc.yaml` to automate preprocessing, training, and evaluation.
+* Ran:
+
+```bash
+dvc repro
+dvc pull -r origin main
+dvc push -r origin main
+git add .
+git commit -m "final commit"
+git push origin main
+```
+
+---
+
+This repository marks a complete transition from learning Flask basics to building and tracking reproducible, production-ready ML pipelines with MLOps best practices.
