@@ -2,6 +2,8 @@
 
 This repository documents my journey into **Flask** and **MLOps**, starting from scratch and gradually building a production-ready ML system.
 
+---
+
 ## 📅 Project Timeline
 
 * **Flask & API Development Start:** May 17, 2025
@@ -15,40 +17,44 @@ This repository documents my journey into **Flask** and **MLOps**, starting from
 
 ### 📌 Flask Fundamentals
 
-* Understood Flask's internal working with **WSGI**.
-* Built routes, handled requests, and used **Jinja2** for rendering HTML.
+* Learned the basics of Flask and its WSGI architecture.
+* Built routes and handled requests.
+* Used **Jinja2** for rendering dynamic HTML templates.
 
 ### 🧩 Jinja2 Templating
 
-* Dynamically injected content into HTML pages.
+* Dynamically injected variables and data into HTML pages.
 
 ### 📝 Form Handling
 
-* Built a form to collect **Name**, **Email**, and **Message**.
-* Implemented both **GET** and **POST** methods.
+* Developed forms to collect **Name**, **Email**, and **Message**.
+* Implemented both **GET** and **POST** methods to handle form submissions.
 
 ### 🔗 Variable Routing
 
-* Used `<variable>` in URLs for dynamic routing.
+* Used `<variable>` in URLs for creating dynamic routes.
 
 ### ↺ Redirect with Parameters
 
-* Used `redirect()` and `url_for()` for clean user redirection with parameters.
+* Used `redirect()` and `url_for()` to redirect users and pass parameters cleanly.
 
 ### 📊 Marks Entry System
 
-* Created a form to input marks for 3 subjects.
-* Calculated average and redirected users to display `PASS` or `FAIL`.
+* Built a form to input marks for 3 subjects.
+* Calculated average and redirected users to a result page showing `PASS` or `FAIL`.
 
 ---
 
 ## 🧪 Flask To-Do List API
 
-Implemented a simple **RESTful API** for a To-Do list application.
+Developed a simple RESTful API for managing a To-Do list.
 
 ### ✅ Features
 
-* View, Add, Update, and Delete tasks
+* View all tasks
+* Add new tasks
+* Update existing tasks
+* Delete tasks
 
 ### 🔗 API Endpoints
 
@@ -76,32 +82,32 @@ Each item contains:
 
 ### ✅ Initial Setup
 
-* Created a virtual environment and folder for MLflow.
-* Installed MLflow and explored the `mlruns` folder.
-* Launched the MLflow UI for experiment tracking.
+* Set up a virtual environment and MLflow project structure.
+* Installed MLflow and understood the structure of `mlruns/`.
+* Launched the MLflow UI for visual experiment tracking.
 
 ### 🧪 Experiment Tracking
 
-* Logged metrics, parameters, and models from sample experiments.
-* Compared runs using the MLflow UI.
+* Logged parameters, metrics, and models from test experiments.
+* Compared multiple experiment runs using MLflow UI.
 
 ### 🏠 House Price Prediction
 
-* Used `RandomForestRegressor`.
-* Applied `GridSearchCV` with 3-fold cross-validation.
-* Logged MSE and hyperparameters.
-* Registered models with appropriate tracking URI.
+* Trained a `RandomForestRegressor` model.
+* Used `GridSearchCV` with 3-fold cross-validation.
+* Logged hyperparameters and metrics (MSE).
+* Registered models using the tracking URI.
 
 ### 📦 Artifacts Management
 
-* Verified creation of `mlruns/` and `artifacts/` folders.
-* Ensured reproducibility using versioned artifacts.
+* Verified the creation of `mlruns/` and `artifacts/` directories.
+* Ensured reproducibility with versioned artifacts.
 
 ### 📊 ANN Model with Hyperopt
 
-* Trained ANN on Wine Quality dataset.
-* Used Hyperopt (`fmin`, `tpe`, `Trials`) for hyperparameter tuning.
-* Tracked RMSE and best parameters with MLflow.
+* Trained an ANN on the Wine Quality dataset.
+* Used `Hyperopt` with `fmin`, `tpe`, and `Trials` for tuning.
+* Tracked RMSE and best hyperparameters using MLflow.
 
 ---
 
@@ -111,36 +117,36 @@ Each item contains:
 
 ### ✅ Steps Followed
 
-1. Created a folder named `DVC/` and a virtual environment `dvc_venv`.
+1. Created a `DVC/` folder and a virtual environment named `dvc_venv`.
 2. Installed DVC:
 
    ```bash
    pip install dvc
    ```
-3. Created a `data/` folder and added `data.txt`.
+3. Created a `data/` directory and added `data.txt`.
 4. Initialized DVC inside the project:
 
    ```bash
    dvc init
    ```
-5. Started tracking data:
+5. Started tracking the data:
 
    ```bash
    dvc add data/data.txt
    ```
-6. Noted: DVC-generated files (e.g., `.dvc`) should be tracked by Git, not the actual data file.
-7. Tracked changes using:
+6. Noted that DVC tracks `.dvc` files in Git, not the actual data.
+7. Tracked changes using Git:
 
    ```bash
    git add data/data.txt.dvc data/.gitignore
    ```
-8. Observed versioned hash changes after modifying `data.txt` and re-running:
+8. After editing `data.txt`, updated tracking:
 
    ```bash
    dvc add data/data.txt
    git add .
    ```
-9. Found versioned data inside `.dvc/cache/` folder.
+9. Observed hashed versions of data in `.dvc/cache/`.
 
 ---
 
@@ -153,3 +159,32 @@ Each item contains:
 * **MLflow** 📈
 * **DVC** 📦
 * **Hyperopt** 🔍
+
+---
+
+## 🧱 Building ML Pipeline on DagsHub
+
+### 📅 Started: December 23, 2025
+
+* Created a repository on DagsHub and cloned it locally.
+* Added a `README.md` file documenting upcoming tasks.
+* Created a new virtual environment `ml_pipeline` and added it to `.gitignore`.
+* Made a folder structure: `data/raw/` and exported `data.csv` (Disease dataset).
+* Configured and pushed code to DagsHub using personal credentials.
+* Created the following structure for the ML pipeline:
+
+```
+project/
+├── data/
+│   └── raw/
+│       └── data.csv
+├── src/
+│   ├── __init__.py       # Marks src as a package
+│   ├── train.py          # Handles model training
+│   ├── evaluating.py     # Evaluates the trained model
+│   └── preprocess.py     # Handles data preprocessing
+├── params.yaml           # Contains parameters for the pipeline
+├── README.md
+```
+
+![Folder Structure](image-1.png)

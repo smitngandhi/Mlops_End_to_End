@@ -1,0 +1,3 @@
+[submodule "machinelearning_pipeline"]
+	path = machinelearning_pipeline
+	url = https://dagshub.com/smitngandhi/machinelearning_pipeline.git
