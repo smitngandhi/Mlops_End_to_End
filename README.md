@@ -171,6 +171,10 @@ Each item contains:
 * Created a new virtual environment `ml_pipeline` and added it to `.gitignore`.
 * Made a folder structure: `data/raw/` and exported `data.csv` (Disease dataset).
 * Configured and pushed code to DagsHub using personal credentials.
-* Created the following structure for the ML pipeline:
 
-![Folder Structure](image-1.png)
+### 📆 ML Pipeline Setup
+
+* Defined `params.yaml` with configurations for preprocessing and training.
+* Implemented logic in `preprocess.py` to read data from `input_path` and store the processed output in `output_path`.
+* Ensured proper directory creation using `os.makedirs(os.path.dirname(output_path), exist_ok=True)`.
+* Saved the preprocessed data to `data/preprocessed/data.csv`.
